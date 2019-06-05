@@ -27,5 +27,23 @@ urls = []
 #take each link and make a new list w/ processed urls
 for link in links_html:
         to_append = link["href"].replace('blob/', '')
-        urls.append("https://raw.githubusercontent.com/" + to_append)
-print(urls)
+        urls.append("https://raw.githubusercontent.com" + to_append)
+#this currently does nothing but ok to leave active
+test_url = urls[3]
+corpus_texts = []
+
+for url in urls:
+    html = request.urlopen(url).read()
+    soup = BeautifulSoup(html, 'lxml')
+    text = soup.text.replace('\n', '')
+    corpus_texts.append(text)
+    print("Scrapping " + url)
+#prints the number of corpus_texts
+print(len(corpus_texts))
+#prints the number of characters in the first our_text
+print(len(corpus_texts[0]))
+
+this_text = corpus_texts[0]
+process_this_text =nltk.word_tokenize(this_text)
+print(process_this_text[0:20])
+print(nltk.FreqDist(process_this_text).most_common(50))
