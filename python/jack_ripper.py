@@ -8,9 +8,5 @@ with open('csvs/jack_ripper.csv', 'r') as csvfile:
 #print(all_texts)
     dates = [row[3] for row in our_reader]
 
-# find the earliest date of published reports
-earliest_date = ''
-for row in dates:
-    if len(row[3]) < len(earliest):
-        earliest = row[3]
-print(earliest_date)
+# find the earliest date of reports published
+print(min(dates))
