@@ -47,3 +47,6 @@ this_text = corpus_texts[0]
 process_this_text =nltk.word_tokenize(this_text)
 print(process_this_text[0:20])
 print(nltk.FreqDist(process_this_text).most_common(50))
+
+#with open('path_to_the_file_to_save_in', 'w') as fout:
+ # fin.write(the_thing_to_write)
